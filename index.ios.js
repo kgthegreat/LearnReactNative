@@ -10,7 +10,8 @@ import {
     AppRegistry,
     StyleSheet,
     Text,
-    Image,  
+    Image,
+    TextInput,
     View
 } from 'react-native';
 
@@ -86,7 +87,12 @@ class FlexDimensionsBasics extends Component {
             // Try removing the `flex: 1` on the parent View.
             // The parent will not have dimensions, so the children can't expand.
             // What if you add `height: 300` instead of `flex: 1`?
-            <View style={{flex: 1, flexDirection: 'row'}}>
+            <View style={{
+                      flex: 1,
+                      flexDirection: 'row',
+                      justifyContent: 'space-around',
+                      alignItems: 'center'
+                  }}>
               <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
               <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
               <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
@@ -94,6 +100,30 @@ class FlexDimensionsBasics extends Component {
         );
     }
 };
+
+
+class PizzaTranslator extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {text: ''};
+    }
+
+    render() {
+        return (
+            <View style={{padding: 10}}>
+              <TextInput
+                 style={{height: 40}}
+                 placeholder="Type here to translate!"
+                 onChangeText={(text) => this.setState({text})}
+                />
+                <Text style={{padding: 10, fontSize: 42}}>
+                  {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
+                </Text>
+            </View>
+        );
+    }
+}
+
 const styles = StyleSheet.create({
   container: {
       flex: 1,
@@ -113,4 +143,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('LearnReactNative', () => FlexDimensionsBasics);
+AppRegistry.registerComponent('LearnReactNative', () => PizzaTranslator);
