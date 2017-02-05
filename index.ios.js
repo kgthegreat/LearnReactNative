@@ -12,6 +12,8 @@ import {
     Text,
     Image,
     TextInput,
+    ScrollView,
+    ListView,
     View
 } from 'react-native';
 
@@ -124,6 +126,49 @@ class PizzaTranslator extends Component {
     }
 }
 
+class Scroller extends Component {
+    render() {
+        return(
+            <ScrollView>
+              <Text style={{fontSize:96}}>Scroll me plz</Text>
+              <Text style={{fontSize:96}}>If you like</Text>
+              <Text style={{fontSize:96}}>Scrolling down</Text>
+              <Text style={{fontSize:96}}>What's the best</Text>
+              <Text style={{fontSize:96}}>Framework around?</Text>
+              <Text style={{fontSize:80}}>React Native</Text>
+            </ScrollView>
+    );
+  }
+}
+
+
+class ListViewBasics extends Component {
+  // Initialize the hardcoded data
+  constructor(props) {
+    super(props);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows([
+          'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin',
+          'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin',
+          'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin',
+          'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin',
+          'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin',
+      ])
+    };
+  }
+  render() {
+    return (
+      <View style={{flex: 1, paddingTop: 22}}>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) => <Text>{rowData}</Text>}
+        />
+      </View>
+    );
+  }
+}
+
 const styles = StyleSheet.create({
   container: {
       flex: 1,
@@ -143,4 +188,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('LearnReactNative', () => PizzaTranslator);
+AppRegistry.registerComponent('LearnReactNative', () =>ListViewBasics);
