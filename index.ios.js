@@ -87,9 +87,9 @@ class FlexDimensionsBasics extends Component {
             // The parent will not have dimensions, so the children can't expand.
             // What if you add `height: 300` instead of `flex: 1`?
             <View style={{flex: 1, flexDirection: 'row'}}>
-              <View style={{flex: 1, backgroundColor: 'powderblue'}} />
-              <View style={{flex: 2, backgroundColor: 'skyblue'}} />
-              <View style={{flex: 3, backgroundColor: 'steelblue'}} />
+              <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
+              <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
+              <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
             </View>
         );
     }
@@ -113,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('LearnReactNative', () => LearnReactNative);
+AppRegistry.registerComponent('LearnReactNative', () => FlexDimensionsBasics);
