@@ -133,7 +133,7 @@ class Scroller extends Component {
               <Text style={{fontSize:96}}>Scroll me plz</Text>
               <Text style={{fontSize:96}}>If you like</Text>
               <Text style={{fontSize:96}}>Scrolling down</Text>
-              <Text style={{fontSize:96}}>What's the best</Text>
+              <Text style={{fontSize:96}}>What''s the best</Text>
               <Text style={{fontSize:96}}>Framework around?</Text>
               <Text style={{fontSize:80}}>React Native</Text>
             </ScrollView>
@@ -167,6 +167,17 @@ class ListViewBasics extends Component {
       </View>
     );
   }
+}
+
+function getMoviesFromApiAsync() {
+    return fetch('https://facebook.github.io/react-native/movies.json')
+        .then((response) => response.json())
+        .then((responseJson) => {
+            return responseJson.movies;
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 }
 
 const styles = StyleSheet.create({
